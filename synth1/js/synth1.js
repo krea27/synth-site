@@ -24,7 +24,7 @@ else {sketch = createCanvas (windowWidth,340);}
     sketch.parent('sketch');
     textSize(16);
     textFont('Pixelify Sans');
-    cancion.loop();
+    //cancion.loop();
 
     
 //playPauseButton es una variable que se utiliza para almacenar una referencia al botón en la página web con el atributo id igual a "playPauseButton"
@@ -122,4 +122,5 @@ function keyPressed() {
 function windowResized(){ 
 if (windowWidth > 1200) {resizeCanvas (1200,340);}
 else {resizeCanvas (windowWidth,340);}
+
 }
