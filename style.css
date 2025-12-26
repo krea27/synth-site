@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pixelify+Sans&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
+*{box-sizing: border-box;}
+
+body {
+	font-family: 'Unica One', cursive;
+	color: rgb(255, 255, 255);
+
+	text-align: center;
+	background-image: url('img/abc.gif');
+
+	margin: 0;
+
+}
+
+h1{	
+
+	font-family: 'Pixelify Sans', cursive;}
+h2, h4 {
+	background-color: #4f4e45;
+
+	font-family: 'Pixelify Sans', cursive;
+	background-image: linear-gradient(135deg, #4f4e45 40%, #F55555 100%);
+}
+
+p {
+	display: flex;
+	max-width: 100%;
+
+	color: rgb(247, 103, 87);
+	;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Play', sans-serif;
+}
+
+p span {
+	background-color: rgb(0, 0, 0);
+	line-height: 1.2;
+
+}
+
+.cont-header {
+	margin: 20px;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+    background-image: linear-gradient(135deg, #4f4e45 10%, #F55555 100%);
+    border-radius: 10px;
+}
+
+
+.cont-header-titulo {
+	margin: 10px;
+
+	flex: 90%;
+}
+
+.cont-header-logo {
+	margin: 10px;
+
+	flex: 10%;
+
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+
+
+}
+
+
+
+
+.cont-header-titulo h1 {
+	text-align: center;
+}
+
+
+
+
+
+.cont-nav {
+
+	margin: 20px;
+	font-size: 16px;
+	background-color: rgb(28, 27, 27);
+	border-radius: 10px;
+
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+}
+	
+nav a {
+	text-decoration: none;
+	color: aqua;
+  }
+  
+ 
+
+nav{color:rgb(105, 59, 104);}
+a:link{color:aqua}/*pseudo clases para enlaces en orden  a:link visited: a:hover a:active*/
+a:visited{color:rgb(255, 255, 255)}
+a:hover{color:red}
+a:active{color:rgb(255, 156, 8)}
+
+ul {
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+justify-content: space-between;
+}
+
+li {
+margin-right: 1rem;
+}
+
+
+.texto-grande {
+	font-size: 20px;
+	/* Cambia el tamaño de fuente a 24px */
+}
+
+/* Estilo para los campos de entrada (nombre, apellido, email, teléfono, synth) */
+.form-control {
+	background-color: rgb(255, 254, 254);
+
+	/*texto del usuario*/
+
+}
+
+/* Estilo para los títulos de los campos */
+.form-group label {
+	background-color: black;
+	/* Fondo negro */
+	color: white;
+	/* Texto blanco */
+	padding: 5px;
+	/* Añade un poco de espacio alrededor del texto */
+	border-radius: 5px;
+	/* Añade bordes redondeados */
+	display: inline-block;
+	/* Para que el fondo se aplique solo alrededor del texto */
+	margin-bottom: 5px;
+	/* Espacio inferior entre los títulos y los campos */
+}
+
+
+
+
+
+
+/* Estilo para los párrafos con clase "ind" */
+.ind {
+	
+	font-family: 'Play', sans-serif;
+	
+	border-radius: 10px;
+}
+
+.ind p {
+	background-color: black;
+}
+
+/* Aplica la imagen de fondo a todos los párrafos <p> */
+section {
+	background-image: url('img/ojitos.jpg');
+	margin: 20px;
+	
+	/*ver breakpoints getbootstrap elige small  large stra large*/
+}
+
+
+/* Estilo para el botón de reproducción */
+.btn-primary.play-button {
+    background-color: transparent; /* Fondo transparente */
+    color: black; /* Texto en color negro */
+    border: 2px solid black; /* Borde negro sólido */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 5px 15px; /* Espaciado interior */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+}
+
+/* Cambia el estilo al pasar el ratón sobre el botón */
+.btn-primary.play-button:hover {
+    background-color: black; /* Fondo negro */
+    color: white; /* Texto en color blanco */
+}
+/* Estilo para el botón Play/Pause */
+.control-btns {
+    display: flex;
+    justify-content: center;
+}
+
+.play-pause-button {
+    background-color: rgb(0, 0, 0); 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+
+/* Estilo para el control de volumen */
+.volume-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.volume-control input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100px;
+    height: 5px;
+    border-radius: 5px;
+    background: linear-gradient(to right, red, white); /* Cambiado a degradado rojo a blanco */
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.volume-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: red; /* Cambiado a rojo */
+    cursor: pointer;
+}
+.carousel-image {
+    max-width: 50%; /* Ajusta el tamaño deseado */
+    margin: 0 auto; /* Centra horizontalmente */
+    text-align: center; /* Centra verticalmente si es necesario */
+}
+::-webkit-scrollbar {
+    display: none;
+}
