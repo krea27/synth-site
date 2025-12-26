@@ -11,8 +11,8 @@ let volumeControl; // Control de volumen
 let reproduciendo = true; // Declaración de la variable
 let ancho = window.innerWidth;
 function preload() {
-    gify = loadImage("../img/3c.gif");
-    cancion = loadSound("../sonidos/ab85.wav");
+    gify = loadImage("img/3c.gif");
+    cancion = loadSound("sonidos/ab85.wav");
 }
 let sketch; 
 function setup() {
@@ -120,4 +120,5 @@ function keyPressed() {
 function windowResized(){ 
 if (windowWidth > 1200) {resizeCanvas (1200,340);}
 else {resizeCanvas (windowWidth,340);}
+
 }
