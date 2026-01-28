@@ -34,8 +34,8 @@ p {
 	display: flex;
 	max-width: 100%;
 
-	color: rgb(247, 103, 87);
-	;
+	color: rgb(255,255,255);
+	
 	align-items: center;
 	justify-content: center;
 	font-family: 'Play', sans-serif;
@@ -250,4 +250,5 @@ section {
 }
 ::-webkit-scrollbar {
     display: none;
+
 }
