@@ -10,7 +10,7 @@
 *{box-sizing: border-box;}
 
 body {
-	font-family: 'Unica One', cursive;
+	font-family: 'Pixelify Sans', cursive;/*'Unica One', cursive;*/
 	color: rgb(255, 255, 255);
 
 	text-align: center;
@@ -23,19 +23,20 @@ body {
 h1{	
 
 	font-family: 'Pixelify Sans', cursive;}
-h2, h4 {
+h2,h3, h4,h5 {
 	background-color: #4f4e45;
-
-	font-family: 'Pixelify Sans', cursive;
+font-family: 'Pixelify Sans', cursive;
 	background-image: linear-gradient(135deg, #4f4e45 40%, #F55555 100%);
+
+	
 }
 
 p {
 	display: flex;
 	max-width: 100%;
 
-	color: rgb(255,255,255);
-	
+	color: rgb(255, 255, 255);
+	;
 	align-items: center;
 	justify-content: center;
 	font-family: 'Play', sans-serif;
@@ -130,13 +131,15 @@ margin-right: 1rem;
 
 
 .texto-grande {
-	font-size: 20px;
+	font-size: 16px;
+	
 	/* Cambia el tamaño de fuente a 24px */
 }
 
 /* Estilo para los campos de entrada (nombre, apellido, email, teléfono, synth) */
 .form-control {
-	background-color: rgb(255, 254, 254);
+	background-color: rgb(0, 0, 0);
+	
 
 	/*texto del usuario*/
 
@@ -167,22 +170,34 @@ margin-right: 1rem;
 .ind {
 	
 	font-family: 'Play', sans-serif;
-	
+	font-size: 12PX;
 	border-radius: 10px;
+
 }
 
 .ind p {
 	background-color: black;
+	border-radius: 10px;
 }
-
+.indi p {
+	background-color: black;
+	margin:0 40px;
+	border-radius: 10px;
+}
 /* Aplica la imagen de fondo a todos los párrafos <p> */
 section {
-	background-image: url('img/ojitos.jpg');
+	/*background-image: url('img/ojitos.jpg');*/
+	background-color: rgb(0, 0, 0);
+	
 	margin: 20px;
 	
 	/*ver breakpoints getbootstrap elige small  large stra large*/
 }
-
+ .ojitos {
+	background-image: url('img/ojitos.jpg');
+    margin: 20px;
+	
+}
 
 /* Estilo para el botón de reproducción */
 .btn-primary.play-button {
@@ -250,5 +265,4 @@ section {
 }
 ::-webkit-scrollbar {
     display: none;
-
 }
