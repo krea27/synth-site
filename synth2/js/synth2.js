@@ -1,41 +1,40 @@
 let gify;
 let textToWrite = "SINTH #3 ";
 let typedText = "";
-let typingSpeed = 8; // Velocidad de escritura (cuadros por letra)
+let typingSpeed = 8; 
+
 let cancion;
-let volumen = 1; // Inicialmente, el volumen es 1
-let cancionRate = 1; // Inicialmente, la velocidad de reproducción es 1
-let playPauseButton; // Botón de reproducción/pausa
-let volumeControl; // Control de volumen
-let reproduciendo = true; // Declaración de la variable
+let volumen = 1; 
+let cancionRate = 1; 
+let playPauseButton; 
+let volumeControl; 
+let reproduciendo = false; // Empezamos en false por seguridad
 let ancho = window.innerWidth;
+let sketch; 
+
 function preload() {
     gify = loadImage('img/3c.gif');
     cancion = loadSound("sonidos/ab83.wav");
 }
-let sketch; 
+
 function setup() {
- if (windowWidth > 1200) {  sketch = createCanvas (1200,340);}
-else{
-    sketch = createCanvas (windowWidth,340);}
-   sketch.parent('sketch');//adjuntar el canvas de la aplicación a un elemento HTML específico en la página web.
-   // Esto establece que el lienzo estará contenido dentro de un elemento HTML con el atributo id igual a "sketch".
+    if (windowWidth > 1200) { 
+        sketch = createCanvas(1200, 340);
+    } else {
+        sketch = createCanvas(windowWidth, 340);
+    }
+    
+    sketch.parent('sketch');
     textSize(16);
     textFont('Pixelify Sans');
-    cancion.loop();
 
-
-    // Configurar los botones y event listeners
-    //playPauseButton es una variable que se utiliza para almacenar una referencia al botón en la página web con el atributo id igual a "playPauseButton"
-    //select('#playPauseButton') se utiliza para seleccionar ese botón utilizando su id.
+    // IMPORTANTE: Eliminamos cancion.loop() de aquí para que Firefox no lo bloquee al cargar
+    
     playPauseButton = select('#playPauseButton');
     playPauseButton.mousePressed(togglePlayPause);
-    //Se agrega un event listener al botón playPauseButton. El event listener se configura para que cuando el botón se haga clic (mousePressed), 
-    //se ejecute la función togglePlayPause().
 
-    volumeControl = select('#volumeControl');//select('#volumeControl') se utiliza para seleccionar ese control deslizante utilizando su id.
+    volumeControl = select('#volumeControl');
     volumeControl.input(setVolume);
-    //Se agrega un event listener al control deslizante volumeControl. El event listener se configura para que cuando el valor del control deslizante cambie (input), se ejecute la función setVolume().
 }
 
 function draw() {
@@ -43,38 +42,32 @@ function draw() {
     displayText();
     typeText();
 
-    // Calcular el centro y el radio del círculo de enmascaramiento
     let centerX = width / 2;
     let centerY = height / 2;
-    let circleRadius = 150; // Cambia este valor según tus necesidades
+    let circleRadius = 150; 
 
-    // Dibuja un círculo de enmascaramiento
-    fill(255,250,0); // Rojo
+    // Círculo Amarillo para el Synth #3
+    fill(255, 250, 0); 
     ellipse(centerX, centerY, circleRadius * 2);
 
-    // Establece el modo de mezcla para que la imagen solo se muestre dentro del círculo
     blendMode(DARKEST);
-
-    // Muestra la imagen enmascarada
     image(gify, 0, centerY - circleRadius, circleRadius * 8, circleRadius * 2);
-
-    // Restaura el modo de mezcla a su valor predeterminado
     blendMode(BLEND);
+
     document.oncontextmenu = function () {
       return false;
     };
-    
 
-// Actualiza la velocidad de reproducción y el volumen solo si se está reproduciendo y el mouse está dentro del canvas
-  if (reproduciendo && mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
-    cancionRate = map(mouseX, 0, width, 2, -1);
-    volumen = map(mouseY, 0, height, 4, 0);
+    // Control de audio mediante posición del mouse
+    if (reproduciendo && mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
+        cancionRate = map(mouseX, 0, width, 2, -1);
+        volumen = map(mouseY, 0, height, 4, 0);
 
-    // Aplica los cambios en la velocidad de reproducción y el volumen
-    cancion.rate(cancionRate);
-    cancion.setVolume(volumen);
-  }
+        cancion.rate(cancionRate);
+        cancion.setVolume(volumen);
+    }
 }
+
 function displayText() {
     fill(0);
     textSize(16);
@@ -88,13 +81,17 @@ function typeText() {
 }
 
 function togglePlayPause() {
-    if (cancion.isPlaying()) {
-        cancion.pause();
-        playPauseButton.html('Play/Pause');
-    } else {
-        cancion.play();
-        playPauseButton.html('Play/Pause');
-    }
+    // La clave para que tu amiga lo escuche en su Mac:
+    userStartAudio().then(() => {
+        if (cancion.isPlaying()) {
+            cancion.pause();
+            reproduciendo = false;
+        } else {
+            // Iniciamos el loop aquí, tras la interacción del usuario
+            cancion.loop();
+            reproduciendo = true;
+        }
+    });
 }
 
 function setVolume() {
@@ -103,20 +100,22 @@ function setVolume() {
 }
 
 function keyPressed() {
-    var tiempo;
-
+    let tiempo;
     if (keyCode == LEFT_ARROW && cancion.currentTime() > 1) {
         tiempo = cancion.currentTime() - 1;
     }
-
     if (keyCode == RIGHT_ARROW && cancion.currentTime() < cancion.duration() - 1) {
         tiempo = cancion.currentTime() + 1;
     }
-
-    cancion.jump(tiempo);
+    if (tiempo !== undefined) {
+        cancion.jump(tiempo);
+    }
 }
-function windowResized(){ 
-if (windowWidth > 1200) {resizeCanvas (1200,340);}
-else {resizeCanvas (windowWidth,340);}
 
+function windowResized() { 
+    if (windowWidth > 1200) {
+        resizeCanvas(1200, 340);
+    } else {
+        resizeCanvas(windowWidth, 340);
+    }
 }
